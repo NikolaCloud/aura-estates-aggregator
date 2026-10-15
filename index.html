@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Estates // Prime Real Estate & Yield Aggregator</title>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#" class="brand">
+        <div class="brand-crest">Æ</div>
+        <div class="brand-text">
+          <h1>Aura Estates</h1>
+          <span>Yield & Prime Asset Aggregator</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#catalog" class="active">Asset Catalog</a></li>
+          <li><a href="#calculator">Yield Simulator</a></li>
+          <li><a href="#market-pulse">Market Pulse</a></li>
+          <li><a href="#dossiers">Private Client Desk</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <span class="currency-badge">EUR (€)</span>
+        <a href="#calculator" class="btn-primary">Analyze Asset ROI &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <span class="hero-badge">Quantitative Real Estate Intelligence</span>
+        <h2 class="hero-title">
+          Curated International Real Estate for <em>Yield-Focused</em> Capital.
+        </h2>
+        <p class="hero-desc">
+          Aggregating prime residential holdings across Zurich, Tokyo, London, Paris, and Dubai.
+          Audited land registry titles, vetted cash-flow models, and algorithmic gross-to-net yield analytics.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">€142M+</span>
+            <span class="stat-label">Assets Monitored</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">6.42%</span>
+            <span class="stat-label">Avg Prime Yield</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">98.2%</span>
+            <span class="stat-label">Prime Occupancy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-preview-box">
+          <div class="hero-preview-header">
+            <div>
+              <h4>Featured Portfolio Asset</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Dubai Fronds // 610 m² Private Beach</span>
+            </div>
+            <span class="yield-pill-high">7.6% Net Yield</span>
+          </div>
+          <div class="preview-metrics">
+            <div class="preview-metric-row">
+              <span style="color: var(--text-muted);">Acquisition Valuation</span>
+              <span style="font-family: var(--font-mono); font-weight: 700;">€5,400,000</span>
+            </div>
+            <div class="preview-metric-row">
+              <span style="color: var(--text-muted);">Projected Monthly Cash Flow</span>
+              <span style="font-family: var(--font-mono); color: #047857; font-weight: 700;">+€34,200 / mo</span>
+            </div>
+            <div class="preview-metric-row">
+              <span style="color: var(--text-muted);">Holding Structure</span>
+              <span>Freehold / Golden Visa Ready</span>
+            </div>
+            <div class="preview-metric-row">
+              <span style="color: var(--text-muted);">Audit Status</span>
+              <span style="color: var(--accent-gold-dark); font-weight: 600;">Full Title Vetted ✓</span>
+            </div>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="openModal('prop-05')">
+              Inspect Dubai Villa Dossier &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Search Toolbar -->
+  <section class="container" id="catalog">
+    <div class="filter-panel">
+      <div class="filter-grid">
+        <div class="filter-group">
+          <label for="search-input">Search Keywords / District</label>
+          <input type="text" id="search-input" placeholder="e.g. Zurichberg, Penthouse, Terrace...">
+        </div>
+        <div class="filter-group">
+          <label for="city-filter">Metropolis</label>
+          <select id="city-filter">
+            <option value="all">All Metropolises</option>
+            <option value="Zurich">Zurich</option>
+            <option value="London">London</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="New York">New York</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Paris">Paris</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="type-filter">Asset Class</label>
+          <select id="type-filter">
+            <option value="all">All Asset Classes</option>
+            <option value="Penthouse">Penthouse</option>
+            <option value="Villa">Villa</option>
+            <option value="Loft">Loft</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Apartment">Apartment</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="yield-filter">Minimum Yield</label>
+          <select id="yield-filter">
+            <option value="0">Any Yield</option>
+            <option value="5.0">&gt;= 5.0% Net</option>
+            <option value="6.0">&gt;= 6.0% Net</option>
+            <option value="7.0">&gt;= 7.0% Net</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort-filter">Sort Portfolio</label>
+          <select id="sort-filter">
+            <option value="yield-desc">Yield (Highest first)</option>
+            <option value="price-asc">Price (Lowest first)</option>
+            <option value="price-desc">Price (Highest first)</option>
+            <option value="area-desc">Living Area (Largest)</option>
+          </select>
+        </div>
+        <div class="filter-group" style="justify-content: flex-end;">
+          <button class="btn-secondary" onclick="document.getElementById('search-input').value=''; document.getElementById('city-filter').value='all'; document.getElementById('type-filter').value='all'; document.getElementById('yield-filter').value='0'; applyFilters();">
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties Catalog Grid -->
+  <section class="container catalog-section">
+    <div class="section-head">
+      <div>
+        <h3 class="section-title">Curated Investment Holdings</h3>
+        <p class="section-sub">Direct access to institutional-grade residential opportunities with verified net yields.</p>
+      </div>
+      <div id="results-count" style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-muted);">
+        6 properties curated
+      </div>
+    </div>
+
+    <div class="catalog-grid" id="catalog-grid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Mortgage & Yield Calculator -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="calc-grid">
+        <div class="calc-inputs-col">
+          <div class="calc-header">
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-gold); font-weight: 700;">Financial Modeling Suite</span>
+            <h3>Acquisition & Net Cashflow Simulator</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+              Calculate leverage ratios, debt servicing costs, and net rental yields after debt service.
+            </p>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-labels">
+              <span>Acquisition Price</span>
+              <span id="calc-price-lbl">€3,200,000</span>
+            </div>
+            <input type="range" id="calc-price" class="slider-input" min="1000000" max="10000000" step="100000" value="3200000">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-labels">
+              <span>Down Payment (%)</span>
+              <span id="calc-downpayment-lbl">30% (€960,000)</span>
+            </div>
+            <input type="range" id="calc-downpayment" class="slider-input" min="10" max="60" step="5" value="30">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-labels">
+              <span>Mortgage Interest Rate (%)</span>
+              <span id="calc-interest-lbl">3.2%</span>
+            </div>
+            <input type="range" id="calc-interest" class="slider-input" min="1.0" max="8.0" step="0.1" value="3.2">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-labels">
+              <span>Loan Amortization Term</span>
+              <span id="calc-term-lbl">25 years</span>
+            </div>
+            <input type="range" id="calc-term" class="slider-input" min="10" max="30" step="5" value="25">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-labels">
+              <span>Target Gross Monthly Rent</span>
+              <span id="calc-rent-lbl">€16,000</span>
+            </div>
+            <input type="range" id="calc-rent" class="slider-input" min="5000" max="50000" step="500" value="16000">
+          </div>
+        </div>
+
+        <div class="calc-results-card">
+          <div>
+            <div class="results-header">
+              <h4>Yield Analytics Engine</h4>
+              <p>Dynamic sensitivity projection based on prime tier benchmarks.</p>
+            </div>
+
+            <div class="key-metric-box">
+              <div class="metric-big" id="res-cashflow">+€4,890 / mo</div>
+              <div class="metric-caption">Net Monthly Cash Flow (Post-Debt)</div>
+            </div>
+
+            <ul class="calc-breakdown-list">
+              <li>
+                <span>Estimated Net Yield</span>
+                <span id="res-net-yield">5.20%</span>
+              </li>
+              <li>
+                <span>Debt Servicing / Month</span>
+                <span id="res-mortgage-pmt">€10,850</span>
+              </li>
+              <li>
+                <span>Senior Loan Principal</span>
+                <span id="res-loan-amount">€2,240,000</span>
+              </li>
+              <li>
+                <span>Cash-on-Cash Return</span>
+                <span id="res-coc-return" style="color: #34D399;">6.1%</span>
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <button class="btn-primary" style="width: 100%; justify-content: center; background-color: var(--accent-gold); border-color: var(--accent-gold);" onclick="alert('Exporting sensitivity table to PDF...')">
+              Export Pro-Forma Model (PDF) &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Pulse Section -->
+  <section class="container market-pulse-section" id="market-pulse">
+    <div class="section-head">
+      <div>
+        <h3 class="section-title">Metropolitan Market Pulse</h3>
+        <p class="section-sub">Quarterly capital growth benchmarks and prime rental vacancy rates.</p>
+      </div>
+    </div>
+
+    <div class="pulse-grid">
+      <div class="pulse-card">
+        <h5>Zurich Prime</h5>
+        <div class="pulse-growth">+4.8% YoY</div>
+        <div class="pulse-progress-bg">
+          <div class="pulse-progress-fill" style="width: 82%;"></div>
+        </div>
+        <div class="pulse-meta">Vacancy rate: 0.6% | Strong CHF stability</div>
+      </div>
+
+      <div class="pulse-card">
+        <h5>Tokyo Central</h5>
+        <div class="pulse-growth">+7.2% YoY</div>
+        <div class="pulse-progress-bg">
+          <div class="pulse-progress-fill" style="width: 90%;"></div>
+        </div>
+        <div class="pulse-meta">Minato & Shibuya demand at 10-year high</div>
+      </div>
+
+      <div class="pulse-card">
+        <h5>Dubai Luxury</h5>
+        <div class="pulse-growth">+12.4% YoY</div>
+        <div class="pulse-progress-bg">
+          <div class="pulse-progress-fill" style="width: 95%;"></div>
+        </div>
+        <div class="pulse-meta">Zero capital gains tax | Ultra-HNW influx</div>
+      </div>
+
+      <div class="pulse-card">
+        <h5>London Kensington</h5>
+        <div class="pulse-growth">+3.1% YoY</div>
+        <div class="pulse-progress-bg">
+          <div class="pulse-progress-fill" style="width: 70%;"></div>
+        </div>
+        <div class="pulse-meta">Prime central London resilient yielding asset</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Details Modal -->
+  <div class="modal-overlay" id="property-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      <div id="modal-details-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="dossiers">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="font-family: var(--font-serif); font-size: 1.3rem;">AURA ESTATES</h4>
+        <p style="margin-top: 0.5rem; max-width: 320px; line-height: 1.6; color: #94A3B8;">
+          Quantitative prime real estate intelligence and proprietary transaction desk for family offices and discerning investors.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="#catalog">Zurich & Geneva</a></li>
+          <li><a href="#catalog">Tokyo Central</a></li>
+          <li><a href="#catalog">London Prime Central</a></li>
+          <li><a href="#catalog">Dubai Palm & Marina</a></li>
+          <li><a href="#catalog">Paris Rive Gauche</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Analytics</h4>
+        <ul>
+          <li><a href="#calculator">Mortgage Simulator</a></li>
+          <li><a href="#calculator">Cap Rate Sensitivity</a></li>
+          <li><a href="#market-pulse">Quarterly Pulse 2026</a></li>
+          <li><a href="#dossiers">Tax Optimization Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Client Services</h4>
+        <ul>
+          <li><a href="#dossiers">Private Client Desk</a></li>
+          <li><a href="#dossiers">Off-Market Acquisitions</a></li>
+          <li><a href="#dossiers">Escrow & Conveyancing</a></li>
+          <li><a href="#dossiers">Schedule Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Aura Estates AG. Registered in Zurich, Switzerland.</div>
+      <div>Compliance: FINMA regulatory guidelines & EU DAC7 disclosure compliant.</div>
+    </div>
+  </footer>
+
+  <script src="static/js/main.js"></script>
+</body>
+</html>
